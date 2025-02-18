@@ -17,9 +17,9 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'skiftiTools'
-copyright = '2023, Harri Merisaari'
-author = 'Harri Merisaari'
+project = 'skiftiGuide'
+copyright = '2025, FBNILAB'
+author = 'Harri Merisaari', 'Hilyah Audah'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
