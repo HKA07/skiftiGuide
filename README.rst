@@ -1,9 +1,8 @@
-Template for the Read the Docs tutorial
+skiftiTools Guide
 =======================================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This is a guide to using skiftiTools with a Docker container.
 
-Read the tutorial here:
+If you would like to use tools on your local computer using R. You can access the tools here:
 
-https://docs.readthedocs.io/en/stable/tutorial/
+https://github.com/haanme/skiftiTools
