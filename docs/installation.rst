@@ -40,4 +40,4 @@ The container expects input and output files inside /out/stats/. However, this d
     
         /out/stats/ when running the container: -v /path/to/data:/out/stats
 
-Resource:'skiftiLink <https://hub.docker.com/r/ashjoll/skiftitools/tags>'_.
+Resource: `Docker Link <https://hub.docker.com/r/ashjoll/skiftitools/tags>`_.
