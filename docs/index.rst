@@ -3,12 +3,11 @@
    contain the root `toctree` directive.
 
 .. toctree::
-      :maxdepth: 3
-      :caption: Contents:
-   
-      installation
-      usage
-
+   :maxdepth: 3
+   :caption: Contents:
+   installation
+   usage
+================================
 skiftiTools
 ================================
 
