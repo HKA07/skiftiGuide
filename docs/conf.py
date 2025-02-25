@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 project = 'skiftiGuide'
 copyright = '2025, FBNILAB'
-author = 'Harri Merisaari', 'Hilyah Audah'
+author = 'Harri Merisaari and Hilyah Audah'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
