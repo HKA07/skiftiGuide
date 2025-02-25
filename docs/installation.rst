@@ -12,8 +12,15 @@ Once Docker has been installed on your computer, you are ready to run.
 How to run the tool: 
 ********************
 
-Pull the Docker image Docker pull ashjoll/skiftitools:0.1.1 
-Run the tool with the required data docker run –rm -v /path/to/data:/out/stats ashjoll/skiftitools:0.1.1 
+Pull the Docker image Docker:
+    ::
+        pull ashjoll/skiftitools:0.1.1 
+
+
+Run the tool with the required data:
+    ::
+        docker run –rm -v /path/to/data:/out/stats ashjoll/skiftitools:0.1.1
+
 Possible issues that might come up when running: 
 
 .. note::
