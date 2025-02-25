@@ -9,7 +9,7 @@ Examples
 
 1. Using together with ANTs TBSS toolbox:
 
-   1.1 **Align data to ENIGMA [1] template using ANTs TBSS package [2]:**
+   1.1 Align data to ENIGMA [1] template using ANTs TBSS package [2]:
 
    - **Step 1:** Place FA scalar maps into the output folder. (Assuming that the FA maps have a `.nii.gz` suffix in a subfolder called `output`.)
 
