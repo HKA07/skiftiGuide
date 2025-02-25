@@ -18,9 +18,9 @@ skiftiTools provides a versatile package facilitating use of vast amount of stat
 
 .. image:: Figure1.png
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Contents:
-
-   installation
-   usage
+   .. toctree::
+      :maxdepth: 3
+      :caption: Contents:
+   
+      installation
+      usage
