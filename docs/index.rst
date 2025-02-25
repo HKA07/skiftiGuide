@@ -2,6 +2,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
 skiftiTools
 ================================
 
@@ -17,12 +18,9 @@ skiftiTools provides a versatile package facilitating use of vast amount of stat
 
 .. image:: Figure1.png
 
-########
-Contents
-########
-
 .. toctree::
    :maxdepth: 3
+   :caption: Contents:
 
    installation
    usage
