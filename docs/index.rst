@@ -5,18 +5,14 @@ skiftiTools
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. This main document is in `'reStructuredText' ("rst") format
+
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
 
    installation
    usage
-
-.. raw:: html
-
-.. role:: red
-
-.. This main document is in `'reStructuredText' ("rst") format
 
 skiftiTools analyses three and four dimensional brain imaging data in various statistical setting. In brain image analysis, Tract-Based Spatial Statistics (TBSS) is a conventionally used tool to make statistical calculations in voxel-space for brain imaging data. While they provide support for basic statistical tests needed in neuroscience, with larger datasets and more complex test settings, their use becomes cumbersome. More sophisticated statistical operations are not supported. 
 
