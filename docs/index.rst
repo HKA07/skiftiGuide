@@ -19,3 +19,8 @@ skiftiTools analyses three and four dimensional brain imaging data in various st
 skiftiTools provides a versatile package facilitating use of vast amount of statistical operations in R and other tools by writing tab separated values ASCII files which are easily readable by most commonly used statistical tools such as R language (RStudio), SPSS, SAS, GraphPad prism. After statistical processing, the resulting ASCII data can be then again read for visualization. The package supports Nifti image format, tab separated ASCII format, and its own stand-alone format for efficient disk usage. It is open source (https://github.com/haanme/skiftiTools), built on R-language and has easy installation from R’s CRAN package repository. In addition, it has basic functions available in Docker containers for further platform independence.
 
 .. image:: Figure1.png
+
+
+Acknowledgements
+-----------------
+This work is steered and maintained by the FinnBrain Neuroimaging Lab, at the University of Turku, Finland.
