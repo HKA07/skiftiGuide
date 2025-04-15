@@ -2,7 +2,7 @@
 Usage
 ######
 
-To run SkiftiTools, you must have Nifti image format or tab-separated ASCII format data.
+To run SkiftiTools, you must have Nifti image format or tab-separated ASCII format data. SkiftiTools is most commonly used with diffusion MRI data.
 
 Examples
 --------
