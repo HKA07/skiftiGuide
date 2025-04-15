@@ -22,6 +22,7 @@ skiftiTools provides a versatile package facilitating use of vast amount of stat
 
 Use of the skiftiTools software package in published works should be accompanied by the following citation:
 
+..Reference::
 Merisaari, H., Rosberg, A., Karlsson, H., Karlsson, L., Seidlitz, J., Betlehem, R., & Tuulari, J. (2024). skiftiTools: An R package for visualizing and manipulating skeletonized brain diffusion tensor imaging data for versatile statistics of choice. Science Communications World Wide. doi:10.57736/87d2-0608
 
 
