@@ -7,7 +7,7 @@ skiftiTools
 
 .. This main document is in `'reStructuredText' ("rst") format
 
-.. include:: ../about.rst
+.. include:: about.rst
 
 .. toctree::
    :maxdepth: 3
