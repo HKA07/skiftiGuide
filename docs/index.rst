@@ -9,17 +9,16 @@ skiftiTools
 
 .. include:: about.rst
 
-.. toctree::
-   :maxdepth: 4
-   :caption:
-
 Contents
 --------
-
+.. toctree::
+   :maxdepth: 3
+      
    installation
    usage
    license
    changes
+   
 
 Acknowledgements
 -----------------
