@@ -6,8 +6,8 @@ To run SkiftiTools, you must have Nifti image format or tab-separated ASCII form
 
 Examples
 --------
-------------------------------------------------------
-Processing OpenNeuro DTI data using SkiftiTools v0.1.1
+
+A. Processing OpenNeuro DTI data using SkiftiTools v0.1.1
 -------------------------------------------------------
 **STEP 1**
 
@@ -17,6 +17,7 @@ Download shell script under 'Download with a shell script' from <https://openneu
 1.2 Extract the download options for 1st three items
 cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
 Subjects that are downloaded with only their FA nifti images:
+
 .. image:: fig_usage_1.png
 
 **STEP 2**
@@ -51,20 +52,23 @@ The most important folder is **stats**. Open it and make sure that you have the 
    - all_FA_skeletonised.nii.gz
    - mean_FA_skeleton_mask.nii.gz
 
-If any of these files are missing, re-run the docker, or debug to see what went wrong.
+If any of these files are missing, re-run the Docker, or debug to see what went wrong.
 
 **STEP 4**
 
 4.1 You can rename the *out_ants_tbss_enigma_ss* to **tbss** to keep the directory structure clean.
 
-4.2 Then run the following command in the directory above the tbss folder: 
+4.2 Then run the following command in the directory above the **tbss** folder: 
    ::
    
       docker run --rm -v $(pwd):/data -it ashjoll/skiftitools:0.1.1 --path /data --outputpath /data/results --TBSSsubfolder tbss --scalar FA --name test
 
-To understand what each flag is doing, you can run: ::
-   docker run --rm ashjoll/skiftitools:0.1.1 -h
-The skifti data file will be in the results folder, named ‘test_FA_Skiftidata.txt’.
+To understand what each flag is doing, you can run: 
+   ::
+   
+      docker run --rm ashjoll/skiftitools:0.1.1 -h
+
+The skifti data file will be in the results folder, named *test_FA_Skiftidata.txt*.
 
 Although this file contains only 3 subjects, it can still be difficult to open in excel/numbers etc due to a lot of data. You can open it in R studio with the following code: 
    ::
@@ -73,12 +77,13 @@ Although this file contains only 3 subjects, it can still be difficult to open i
 
       skifti <- fread("/path/to/text/file", header = FALSE, skip = 8)
 
-(The first few lines in text file will have metadata that we don’t need, hence skip = 8).
+(The first few lines in the text file will have metadata that we don’t need, hence skip = 8).
    ::
       
       colnames(skifti) <- c("SubjectID", paste0("V", 1:(ncol(skifti)-1)))
 
 The tabular data should look like this:
+
 .. image:: fig_usage_4.png
 
 The picture does not display all the columns; there will be many. The V1, V2, V3... are the
