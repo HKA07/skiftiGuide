@@ -11,8 +11,7 @@ A. Processing OpenNeuro DTI data using SkiftiTools v0.1.1
 -------------------------------------------------------
 **STEP 1**
 
-1.1 OpenNeuro Dataset:
-`Download shell script <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>` under 'Download with a shell script' from 
+1.1 OpenNeuro Dataset: Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_
 
 1.2 Extract the download options for 1st three items ``cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh``
 
@@ -96,7 +95,7 @@ B. Processing OpenNeuro DTI data using SkiftiTools v0.2.0
 
 **STEP 1**
 1.1 OpenNeuro Dataset:
-Download shell script under 'Download with a shell script' from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_.
+Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_.
 
 1.2 Extract the download options for 1st three items
 cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
