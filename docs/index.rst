@@ -11,7 +11,10 @@ skiftiTools
 
 .. toctree::
    :maxdepth: 4
-   :caption: Contents:
+   :caption:
+
+Contents
+--------
 
    installation
    usage
