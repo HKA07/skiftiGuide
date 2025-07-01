@@ -27,7 +27,7 @@ Possible issues that might come up when running v0.1.1:
 
     - docker run --rm --platform linux/amd64 -v /path/to/data:/out/stats ashjoll/skiftitools:0.1.1 
     
-The container expects input and output files inside /out/stats/. However, this directory is not automatically created inside the Docker container. Therefore, users must mount an external directory to: ::
+The container expects input and output files inside ``/out/stats/``. However, this directory is not automatically created inside the Docker container. Therefore, users must mount an external directory to: ::
     
     /out/stats/ when running the container: -v /path/to/data:/out/stats
 
