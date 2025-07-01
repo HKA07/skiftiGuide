@@ -9,7 +9,7 @@ SkiftiTools can be used with Docker containers. Docker must be `installed
 Once Docker has been installed on your computer, you are ready to run. 
 
 ********************
-How to run the tool: 
+How to run the tool
 ********************
 
 Pull the Docker image Docker:
