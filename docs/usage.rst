@@ -92,6 +92,135 @@ mean FA in each white matter ROI for each subject.
 **STEP 5**
 Perform any kind of complex statistical analysis using this dataset.
 
+**********************************************************
+B. Processing OpenNeuro DTI data using SkiftiTools v0.2.0
+**********************************************************
+
+**STEP 1**
+1.1 OpenNeuro Dataset:
+Download shell script under 'Download with a shell script' from `OpenNeuro<https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_
+
+1.2 Extract the download options for 1st three items
+cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
+
+
+Subjects that are downloaded with only their FA nifti images:
+
+..image::fig_usage_2.1
+
+**STEP 2**
+
+Run TBSS on the data, can be FSL, ANTS etc.
+
+
+**STEP 3**
+
+Check the TBSS output
+
+..image::fig_usage_2.2
+
+Make sure to have at least the following files in the stats folder:
+	::
+
+		/stats/all_FA_skeletonised.nii.gz
+		/stats/mean_FA_skeleton_mask.nii.gz
+
+
+**STEP 4**
+
+Run make_subject_list.sh to create a text file that contains the subject IDs.
+
+**STEP 5**
+Run the docker command: ::
+
+	docker run --rm -v /path/to/tbss/data/:/data ashjoll/skiftitools:0.2.0 --path /data --outputpath /data/results --TBSSsubfolder tbss --subjectsfile /data/subject_list.txt --scalars FA --name test --writemaskcoordinates Yes
+
+To understand what each flag is doing, run: ::
+
+	docker run --rm ashjoll/skiftitools:0.2.0 -h
+
+
+The skifti data file will be in the results folder, named *test_FA_Skiftidata.txt*.
+
+If you used the ``--writemaskcoordinates``, you would find a test_FA_Skiftidata_mask_coordinates.txt folder containing all the coordinates.
+
+Although this test skiftidata file contains only 3 subjects, it can still be difficult to open in excel/numbers etc due to a lot of voxel data. You can open it in R studio with the following code: ::
+
+	library(data.table)
+	skifti <- fread("/path/to/text/file", header = FALSE, skip = 8)
+
+(The first few lines in text file will have metadata that we don’t need, hence skip = 8). ::
+
+	colnames(skifti) <- c("SubjectID", paste0("V", 1:(ncol(skifti)-1)))
+
+
+The tabular data should look like this: 
+
+..image::fig_usage_2.3
+
+The picture does not display all the columns; there will be many. The V1, V2, V3... are the mean FA in each white matter ROI voxels for each subject.
+
+
+**STEP 6**
+
+To integrate the coordinates text file to the skiftidata table in R:
+
+..note::
+	##Coordinates for non-zero voxels##
+	#Load coordinates::
+	
+		coords <- fread("/path/to/test_FA_Skiftidata_mask_coordinates.txt", header = FALSE)
+		colnames(coords) <- c("X", "Y", "Z")
+
+	#Find voxel columns with at least one non-zero value::
+	
+		voxel_cols <- colnames(skifti)[-1]
+		non_zero_voxels <- voxel_cols[apply(skifti[, ..voxel_cols], 2, function(col) any(col != 0))]
+	
+	#Subset both data and coordinates::
+
+		filtered_skifti <- skifti[, c("SubjectID", non_zero_voxels), with = FALSE]
+		filtered_coords <- coords[match(non_zero_voxels, voxel_cols), ]
+
+
+	#Create new header row with coordinates::
+	
+		coord_labels <- apply(filtered_coords, 1, function(row) paste0("(", row[1], ",", row[2], ",", row[3], ")"))
+		header_row <- c("Coordinates", coord_labels)
+
+	#Combine into final output: add coordinate row as a new row before data::
+		
+		skifti_nonzero <- rbindlist(list(as.list(header_row), filtered_skifti), use.names = FALSE, fill = TRUE)
+
+
+Output table:
+
+..image::fig_usage_2.4
+
+..note:: 
+	##Coordinates for all voxels##
+	#Load full coordinates::
+	
+		coords_all <- fread("/path/to/test_FA_Skiftidata_mask_coordinates.txt", header = FALSE)
+		colnames(coords_all) <- c("X", "Y", "Z")
+
+	#Create coordinate labels::
+		
+		coord_labels_all <- apply(coords_all, 1, function(row) paste0("(", row[1], ",", row[2], ",", row[3], ")"))
+		header_row_all <- c("Coordinates, coord_labels_all)
+
+	#Combine coordinate row + subject data::
+
+		skifti_allvox <- rbindlist(list(as.list(header_row_all), skifti), use.names = FALSE, fill = TRUE)
+
+Output table:
+
+..image::fig_usage_2.5
+
+**STEP 7**
+Perform any kind of complex statistical analysis using this tabular data.
+
+
 
 References
 ----------
