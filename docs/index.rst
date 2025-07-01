@@ -16,7 +16,7 @@ skiftiTools
    installation
    usage
    license
-   whats_new
+   changes
 
 Acknowledgements
 -----------------
