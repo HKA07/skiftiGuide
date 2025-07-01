@@ -22,7 +22,7 @@ Contents
 
 Acknowledgements
 -----------------
-• `Harri Merisaari <https://orcid.org/0000-0002-8515-5399>`_ ‒ Project Manager & Software Developer)
+• `Harri Merisaari <https://orcid.org/0000-0002-8515-5399>`_ ‒ Project Manager & Software Developer
 • `Aaron Barron <https://orcid.org/0000-0002-0905-6102>`_ ‒ Tester
 • `Ashmeet Jolly <https://orcid.org/0009-0003-2348-7261>`_ ‒ DevOps Engineer (Docker configuration)
 • `Aylin Rosberg <https://orcid.org/0000-0002-4587-4882>`_ ‒ Technical Writer (CRAN) 
