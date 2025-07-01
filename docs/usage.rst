@@ -27,9 +27,9 @@ For this specific example data, use the script tractinferno_prep_ants_tbss.sh an
 
 Then, run the following docker command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can get force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing:
 
-**--cpus="1"** 
-**--memory="4g"**
-**--ncpu 1**
+``--cpus="1"`` 
+``--memory="4g"``
+``--ncpu 1``
 
    ::
 
