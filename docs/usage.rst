@@ -8,8 +8,10 @@ Examples
 --------
 
 A. Processing OpenNeuro DTI data using SkiftiTools v0.1.1
--------------------------------------------------------
-**STEP 1**
+-----------------------------------------------------------
+*******
+STEP 1
+*******
 
 1.1 OpenNeuro Dataset: Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_
 
@@ -19,7 +21,9 @@ Subjects that are downloaded with only their FA nifti images:
 
 .. image:: fig_usage_1.png
 
-**STEP 2**
+*******
+STEP 2
+*******
 
 2.1 Run ANTs TBSS on the data.
 For this specific example data, use the script tractinferno_prep_ants_tbss.sh and run it in the directory it is downloaded in *bash tractinferno_prep_ants_tbss.sh*
@@ -38,7 +42,9 @@ Output in the terminal should look like this:
 
 .. image:: fig_usage_2.png
 
-**STEP 3**
+*******
+STEP 3
+*******
 
 Check the output created by the ants_tbss ``Docker``. The out_ants_tbss_enigma_ss folder:
 
@@ -52,7 +58,9 @@ The most important folder is **stats**. Open it and make sure that you have the 
 
 If any of these files are missing, re-run the ``Docker``, or debug to see what went wrong.
 
-**STEP 4**
+*******
+STEP 4
+*******
 
 4.1 You can rename the *out_ants_tbss_enigma_ss* to **tbss** to keep the directory structure clean.
 
@@ -86,14 +94,19 @@ The tabular data should look like this:
 
 The picture does not display all the columns; there will be many. The V1, V2, V3... are the mean FA in each white matter ROI for each subject.
 
-**STEP 5**
+*******
+STEP 5
+*******
+
 Perform any kind of complex statistical analysis using this dataset.
 
-**********************************************************
-B. Processing OpenNeuro DTI data using SkiftiTools v0.2.0
-**********************************************************
 
-**STEP 1**
+B. Processing OpenNeuro DTI data using SkiftiTools v0.2.0
+----------------------------------------------------------
+*******
+STEP 1
+*******
+
 1.1 OpenNeuro Dataset:
 Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_.
 
@@ -103,31 +116,39 @@ cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_sk
 
 Subjects that are downloaded with only their FA nifti images:
 
-..image::fig_usage_2.1.png
+..image:: fig_usage_2.1.png
 
-**STEP 2**
+*******
+STEP 2
+*******
 
 Run TBSS on the data, can be FSL, ANTS etc.
 
 
-**STEP 3**
-
+*******
+STEP 3
+*******
 Check the TBSS output
 
-..image::fig_usage_2.2.png
+..image:: fig_usage_2.2.png
 
 Make sure to have at least the following files in the stats folder:
-	::
+::
 
-		/stats/all_FA_skeletonised.nii.gz
-		/stats/mean_FA_skeleton_mask.nii.gz
+	/stats/all_FA_skeletonised.nii.gz
+	/stats/mean_FA_skeleton_mask.nii.gz
 
 
-**STEP 4**
+*******
+STEP 4
+*******
 
 Run make_subject_list.sh to create a text file that contains the subject IDs.
 
-**STEP 5**
+*******
+STEP 5
+*******
+
 Run the docker command: ::
 
 	docker run --rm -v /path/to/tbss/data/:/data ashjoll/skiftitools:0.2.0 --path /data --outputpath /data/results --TBSSsubfolder tbss --subjectsfile /data/subject_list.txt --scalars FA --name test --writemaskcoordinates Yes
@@ -148,21 +169,24 @@ Although this test skiftidata file contains only 3 subjects, it can still be dif
 
 (The first few lines in text file will have metadata that we don’t need, hence skip = 8). ::
 
-	colnames(skifti) <- c("SubjectID", paste0("V", 1:(ncol(skifti)-1)))
+colnames(skifti) <- c("SubjectID", paste0("V", 1:(ncol(skifti)-1)))
 
 
 The tabular data should look like this: 
 
-..image::fig_usage_2.3.png
+..image:: fig_usage_2.3.png
 
 The picture does not display all the columns; there will be many. The V1, V2, V3... are the mean FA in each white matter ROI voxels for each subject.
 
 
-**STEP 6**
+*******
+STEP 6
+*******
 
 To integrate the coordinates text file to the skiftidata table in R:
 
 .. note::
+	
 	##Coordinates for non-zero voxels##
 	#Load coordinates::
 	
@@ -192,7 +216,7 @@ To integrate the coordinates text file to the skiftidata table in R:
 
 Output table:
 
-..image::fig_usage_2.4.png
+..image:: fig_usage_2.4.png
 
 .. note:: 
 	##Coordinates for all voxels##
@@ -212,9 +236,12 @@ Output table:
 
 Output table:
 
-..image::fig_usage_2.5.png
+..image:: fig_usage_2.5.png
 
-**STEP 7**
+*******
+STEP 7
+*******
+
 Perform any kind of complex statistical analysis using this tabular data.
 
 
