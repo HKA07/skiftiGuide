@@ -2,7 +2,7 @@
 Installation
 #############
 
-SkiftiTools can be used with ``Docker containers``. ``Docker`` must be `installed
+SkiftiTools can be used with ``Docker`` containers. ``Docker`` must be `installed
 <https://docs.docker.com/engine/installation/>`_.
 
 
