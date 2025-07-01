@@ -116,7 +116,7 @@ cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_sk
 
 Subjects that are downloaded with only their FA nifti images:
 
-..image:: fig_usage_2.1.png
+..image:: fig_usage_2_1.png
 
 *******
 STEP 2
@@ -130,7 +130,7 @@ STEP 3
 *******
 Check the TBSS output
 
-..image:: fig_usage_2.2.png
+..image:: fig_usage_2_2.png
 
 Make sure to have at least the following files in the stats folder:
 ::
@@ -157,7 +157,6 @@ To understand what each flag is doing, run: ::
 
 	docker run --rm ashjoll/skiftitools:0.2.0 -h
 
-
 The skifti data file will be in the results folder, named *test_FA_Skiftidata.txt*.
 
 If you used the ``--writemaskcoordinates``, you would find a test_FA_Skiftidata_mask_coordinates.txt folder containing all the coordinates.
@@ -174,7 +173,7 @@ colnames(skifti) <- c("SubjectID", paste0("V", 1:(ncol(skifti)-1)))
 
 The tabular data should look like this: 
 
-..image:: fig_usage_2.3.png
+..image:: fig_usage_2_3.png
 
 The picture does not display all the columns; there will be many. The V1, V2, V3... are the mean FA in each white matter ROI voxels for each subject.
 
@@ -187,7 +186,7 @@ To integrate the coordinates text file to the skiftidata table in R:
 
 .. note::
 	
-	##Coordinates for non-zero voxels##
+	#Coordinates for non-zero voxels#
 	#Load coordinates::
 	
 		coords <- fread("/path/to/test_FA_Skiftidata_mask_coordinates.txt", header = FALSE)
@@ -216,7 +215,7 @@ To integrate the coordinates text file to the skiftidata table in R:
 
 Output table:
 
-..image:: fig_usage_2.4.png
+..image:: fig_usage_2_4.png
 
 .. note:: 
 	##Coordinates for all voxels##
@@ -236,7 +235,7 @@ Output table:
 
 Output table:
 
-..image:: fig_usage_2.5.png
+..image:: fig_usage_2_5.png
 
 *******
 STEP 7
