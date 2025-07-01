@@ -32,7 +32,7 @@ release = '0.0.1'
 source_suffix = '.rst'
 master_doc = 'index'
 extensions = [
-              #    'myst_parser',
+    'myst_parser',
     'sphinx.ext.duration',
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
