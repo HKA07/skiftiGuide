@@ -20,12 +20,12 @@ Subjects that are downloaded with only their FA nifti images:
 .. image:: fig_usage_1.png
 
 **STEP 2**
-2.1 Run ANTs TBSS on the data.
-For this specific example data, use the script tractinferno_prep_ants_tbss.sh and run it in the directory it is downloaded in:
 
-bash tractinferno_prep_ants_tbss.sh
+2.1 Run ANTs TBSS on the data.
+For this specific example data, use the script tractinferno_prep_ants_tbss.sh and run it in the directory it is downloaded in *bash tractinferno_prep_ants_tbss.sh*
 
 Then, run the following docker command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can get force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing:
+
 **--cpus="1"** 
 **--memory="4g"**
 **--ncpu 1**
@@ -36,11 +36,13 @@ Then, run the following docker command, but make sure that you are using memory 
 
 
 Output in the terminal should look like this:
+
 .. image:: fig_usage_2.png
 
 **STEP 3**
-Check output created by the ants_tbss docker.
-The out_ants_tbss_enigma_ss folder:
+
+Check output created by the ants_tbss docker. The out_ants_tbss_enigma_ss folder:
+
 .. image:: fig_usage_3.png
 
 The most important folder is **stats**. Open it and make sure that you have the following:
@@ -48,13 +50,16 @@ The most important folder is **stats**. Open it and make sure that you have the 
    - FA_combined_roi.csv
    - all_FA_skeletonised.nii.gz
    - mean_FA_skeleton_mask.nii.gz
+
 If any of these files are missing, re-run the docker, or debug to see what went wrong.
 
-STEP 4
+**STEP 4**
+
 4.1 You can rename the *out_ants_tbss_enigma_ss* to **tbss** to keep the directory structure clean.
 
-4.2 Then run the following command in the directory above the tbss folder:
+4.2 Then run the following command in the directory above the tbss folder: 
    ::
+   
       docker run --rm -v $(pwd):/data -it ashjoll/skiftitools:0.1.1 --path /data --outputpath /data/results --TBSSsubfolder tbss --scalar FA --name test
 
 To understand what each flag is doing, you can run: ::
@@ -70,6 +75,7 @@ Although this file contains only 3 subjects, it can still be difficult to open i
 
 (The first few lines in text file will have metadata that we don’t need, hence skip = 8).
    ::
+      
       colnames(skifti) <- c("SubjectID", paste0("V", 1:(ncol(skifti)-1)))
 
 The tabular data should look like this:
