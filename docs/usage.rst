@@ -12,10 +12,11 @@ A. Processing OpenNeuro DTI data using SkiftiTools v0.1.1
 **STEP 1**
 
 1.1 OpenNeuro Dataset:
-Download shell script under 'Download with a shell script' from <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>
+`Download shell script<https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_ under 'Download with a shell script' from 
 
 1.2 Extract the download options for 1st three items
 cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
+
 Subjects that are downloaded with only their FA nifti images:
 
 .. image:: fig_usage_1.png
@@ -30,7 +31,6 @@ Then, run the following docker command, but make sure that you are using memory 
 ``--cpus="1"`` 
 ``--memory="4g"``
 ``--ncpu 1``
-
    ::
 
       docker run -it --cpus="1" --memory="4g" -v $(pwd):/root/data -v $(pwd)/out_ants_tbss_enigma_ss:/root/data/out_enigma haanme/ants_tbss:0.4.2 -i /root/data/IMAGELIST_ss_docker.csv -c /root/data/CASELIST.txt --modality FA --enigma --ncpu 1 -o /root/data/out_enigma
