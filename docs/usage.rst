@@ -12,10 +12,9 @@ A. Processing OpenNeuro DTI data using SkiftiTools v0.1.1
 **STEP 1**
 
 1.1 OpenNeuro Dataset:
-`Download shell script<https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_ under 'Download with a shell script' from 
+`Download shell script <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>` under 'Download with a shell script' from 
 
-1.2 Extract the download options for 1st three items
-cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
+1.2 Extract the download options for 1st three items ``cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh``
 
 Subjects that are downloaded with only their FA nifti images:
 
@@ -26,7 +25,7 @@ Subjects that are downloaded with only their FA nifti images:
 2.1 Run ANTs TBSS on the data.
 For this specific example data, use the script tractinferno_prep_ants_tbss.sh and run it in the directory it is downloaded in *bash tractinferno_prep_ants_tbss.sh*
 
-Then, run the following docker command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can get force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing:
+Then, run the following docker command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can be force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing:
 
 ``--cpus="1"`` 
 ``--memory="4g"``
@@ -42,7 +41,7 @@ Output in the terminal should look like this:
 
 **STEP 3**
 
-Check output created by the ants_tbss docker. The out_ants_tbss_enigma_ss folder:
+Check the output created by the ants_tbss ``Docker``. The out_ants_tbss_enigma_ss folder:
 
 .. image:: fig_usage_3.png
 
@@ -52,7 +51,7 @@ The most important folder is **stats**. Open it and make sure that you have the 
    - all_FA_skeletonised.nii.gz
    - mean_FA_skeleton_mask.nii.gz
 
-If any of these files are missing, re-run the Docker, or debug to see what went wrong.
+If any of these files are missing, re-run the ``Docker``, or debug to see what went wrong.
 
 **STEP 4**
 
@@ -70,7 +69,7 @@ To understand what each flag is doing, you can run:
 
 The skifti data file will be in the results folder, named *test_FA_Skiftidata.txt*.
 
-Although this file contains only 3 subjects, it can still be difficult to open in excel/numbers etc due to a lot of data. You can open it in R studio with the following code: 
+Although this file contains only 3 subjects, it can still be difficult to open in excel/numbers etc due to a lot of data. You can open it in ``R Studio`` with the following code: 
    ::
 
       library(data.table)
@@ -86,8 +85,7 @@ The tabular data should look like this:
 
 .. image:: fig_usage_4.png
 
-The picture does not display all the columns; there will be many. The V1, V2, V3... are the
-mean FA in each white matter ROI for each subject.
+The picture does not display all the columns; there will be many. The V1, V2, V3... are the mean FA in each white matter ROI for each subject.
 
 **STEP 5**
 Perform any kind of complex statistical analysis using this dataset.
@@ -98,7 +96,7 @@ B. Processing OpenNeuro DTI data using SkiftiTools v0.2.0
 
 **STEP 1**
 1.1 OpenNeuro Dataset:
-Download shell script under 'Download with a shell script' from `OpenNeuro<https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_
+Download shell script under 'Download with a shell script' from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_.
 
 1.2 Extract the download options for 1st three items
 cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
@@ -106,7 +104,7 @@ cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_sk
 
 Subjects that are downloaded with only their FA nifti images:
 
-..image::fig_usage_2.1
+..image::fig_usage_2.1.png
 
 **STEP 2**
 
@@ -117,7 +115,7 @@ Run TBSS on the data, can be FSL, ANTS etc.
 
 Check the TBSS output
 
-..image::fig_usage_2.2
+..image::fig_usage_2.2.png
 
 Make sure to have at least the following files in the stats folder:
 	::
@@ -156,7 +154,7 @@ Although this test skiftidata file contains only 3 subjects, it can still be dif
 
 The tabular data should look like this: 
 
-..image::fig_usage_2.3
+..image::fig_usage_2.3.png
 
 The picture does not display all the columns; there will be many. The V1, V2, V3... are the mean FA in each white matter ROI voxels for each subject.
 
@@ -165,7 +163,7 @@ The picture does not display all the columns; there will be many. The V1, V2, V3
 
 To integrate the coordinates text file to the skiftidata table in R:
 
-..note::
+.. note::
 	##Coordinates for non-zero voxels##
 	#Load coordinates::
 	
@@ -195,9 +193,9 @@ To integrate the coordinates text file to the skiftidata table in R:
 
 Output table:
 
-..image::fig_usage_2.4
+..image::fig_usage_2.4.png
 
-..note:: 
+.. note:: 
 	##Coordinates for all voxels##
 	#Load full coordinates::
 	
@@ -215,7 +213,7 @@ Output table:
 
 Output table:
 
-..image::fig_usage_2.5
+..image::fig_usage_2.5.png
 
 **STEP 7**
 Perform any kind of complex statistical analysis using this tabular data.
