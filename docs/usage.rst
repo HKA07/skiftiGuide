@@ -212,6 +212,7 @@ Output table:
 .. image:: fig_usage_2_4.png
 
 .. note:: 
+	
 	##Coordinates for all voxels##
 	
 	#Load full coordinates ::
@@ -219,12 +220,12 @@ Output table:
 		coords_all <- fread("/path/to/test_FA_Skiftidata_mask_coordinates.txt", header = FALSE)
 		colnames(coords_all) <- c("X", "Y", "Z")
 
-	#Create coordinate labels::
+	#Create coordinate labels ::
 		
 		coord_labels_all <- apply(coords_all, 1, function(row) paste0("(", row[1], ",", row[2], ",", row[3], ")"))
 		header_row_all <- c("Coordinates, coord_labels_all)
 
-	#Combine coordinate row + subject data::
+	#Combine coordinate row + subject data ::
 
 		skifti_allvox <- rbindlist(list(as.list(header_row_all), skifti), use.names = FALSE, fill = TRUE)
 
