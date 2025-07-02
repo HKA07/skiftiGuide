@@ -17,7 +17,7 @@ STEP 1
 
 1.2 Extract the download options for 1st three items ::
 	
-	cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
+cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
 
 Subjects that are downloaded with only their FA nifti images:
 
@@ -30,7 +30,7 @@ STEP 2
 2.1 Run ANTs TBSS on the data.
 For this specific example data, use the script `tractinferno_prep_ants_tbss.sh <https://github.com/HKA07/skiftiGuide/blob/main/docs/make_subjects_list.sh>`_ and run it in the directory it is downloaded in.
 
-2.2 Then, run the following ``Docker`` command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can be force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing: ``--cpus="1"`` ``--memory="4g"````--ncpu 1``
+2.2 Then, run the following ``Docker`` command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can be force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing: ``--cpus="1"`` ``--memory="4g"`` ``--ncpu 1``
    ::
 
       docker run -it --cpus="1" --memory="4g" -v $(pwd):/root/data -v $(pwd)/out_ants_tbss_enigma_ss:/root/data/out_enigma haanme/ants_tbss:0.4.2 -i /root/data/IMAGELIST_ss_docker.csv -c /root/data/CASELIST.txt --modality FA --enigma --ncpu 1 -o /root/data/out_enigma
@@ -64,9 +64,9 @@ STEP 4
 4.1 You can rename the *out_ants_tbss_enigma_ss* to *tbss* to keep the directory structure clean.
 
 4.2 Then run the following command in the directory above the *tbss* folder: 
-   ::
+::
    
-      docker run --rm -v $(pwd):/data -it ashjoll/skiftitools:0.1.1 --path /data --outputpath /data/results --TBSSsubfolder tbss --scalar FA --name test
+docker run --rm -v $(pwd):/data -it ashjoll/skiftitools:0.1.1 --path /data --outputpath /data/results --TBSSsubfolder tbss --scalar FA --name test
 
 To understand what each flag is doing, you can run: 
    ::
