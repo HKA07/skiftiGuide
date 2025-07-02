@@ -29,4 +29,4 @@ Acknowledgements
 • `Hilyatushalihah K. Audah <https://orcid.org/0009-0003-5437-5561>`_ ‒ Technical Writer (Docker)
 • `Ilkka Suuronen <https://orcid.org/0009-0001-6516-4116>`_ ‒ Software Developer
 • `Isabella L. C. Mariani Wigley <https://orcid.org/0000-0003-0958-5124>`_ ‒ Software Developer (R programming)
-
+• `Jetro Tuulari <https://orcid.org/0000-0002-1797-8000>`_ ‒ Tester & Initial Conceptualization
