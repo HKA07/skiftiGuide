@@ -28,4 +28,4 @@ Possible issues that might come up when running the ``Docker``:
         docker run --rm --platform linux/amd64 -v /path/to/data:/out/stats ashjoll/skiftitools:0.2.0 
     
 
-**Resource**: `Docker Source Link <https://hub.docker.com/r/ashjoll/skiftitools/tags>`_.
+**Resource**: `SkiftiTools Docker Source Link <https://hub.docker.com/r/ashjoll/skiftitools/tags>`_.
