@@ -19,7 +19,7 @@ Download shell script under *Download with a shell script* from `OpenNeuro <http
 
 1.2 Extract the download options for 1st three items ::
 	
-cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
+	cat ds003900-1.1.1.sh | grep fa.nii.gz | head -3 > ds003900-1.1.1_example_for_skiftiTools.sh
 
 Subjects that are downloaded with only their FA nifti images:
 
