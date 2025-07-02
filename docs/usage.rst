@@ -30,8 +30,7 @@ STEP 2
 2.1 Run ANTs TBSS on the data.
 For this specific example data, use the script `tractinferno_prep_ants_tbss.sh <https://github.com/HKA07/skiftiGuide/blob/main/docs/make_subjects_list.sh>`_ and run it in the directory it is downloaded in.
 
-2.2 Then, run the following ``Docker`` command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can be force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing: ``--cpus="1"`` ``--memory="4g"`` ``--ncpu 1``
-   ::
+2.2 Then, run the following ``Docker`` command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can be force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing: ``--cpus="1"`` ``--memory="4g"`` ``--ncpu 1`` ::
 
       docker run -it --cpus="1" --memory="4g" -v $(pwd):/root/data -v $(pwd)/out_ants_tbss_enigma_ss:/root/data/out_enigma haanme/ants_tbss:0.4.2 -i /root/data/IMAGELIST_ss_docker.csv -c /root/data/CASELIST.txt --modality FA --enigma --ncpu 1 -o /root/data/out_enigma
 
@@ -67,8 +66,7 @@ STEP 4
    
 	docker run --rm -v $(pwd):/data -it ashjoll/skiftitools:0.1.1 --path /data --outputpath /data/results --TBSSsubfolder tbss --scalar FA --name test
 
-To understand what each flag is doing, you can run: 
-   ::
+To understand what each flag is doing, you can run: ::
    
       docker run --rm ashjoll/skiftitools:0.1.1 -h
 
@@ -127,8 +125,7 @@ Check the TBSS output
 
 .. image:: fig_usage_2_2.png
 
-Make sure to have at least the following files in the stats folder:
-::
+Make sure to have at least the following files in the stats folder: ::
 
 	/stats/all_FA_skeletonised.nii.gz
 	/stats/mean_FA_skeleton_mask.nii.gz
@@ -161,6 +158,7 @@ Although this test skiftidata file contains only 3 subjects, it can still be dif
 	library(data.table)
 	skifti <- fread("/path/to/text/file", header = FALSE, skip = 8)
 
+
 (The first few lines in text file will have metadata that we don’t need, hence skip = 8). ::
 
 	colnames(skifti) <- c("SubjectID", paste0("V", 1:(ncol(skifti)-1)))
@@ -181,29 +179,30 @@ To integrate the coordinates text file to the skiftidata table in R:
 
 .. note::
 	
-	#Coordinates for non-zero voxels#
-	#Load coordinates::
+	#Coordinates for non-zero voxels
+
+	#Load coordinates ::
 	
 		coords <- fread("/path/to/test_FA_Skiftidata_mask_coordinates.txt", header = FALSE)
 		colnames(coords) <- c("X", "Y", "Z")
 
-	#Find voxel columns with at least one non-zero value::
+	#Find voxel columns with at least one non-zero value ::
 	
 		voxel_cols <- colnames(skifti)[-1]
 		non_zero_voxels <- voxel_cols[apply(skifti[, ..voxel_cols], 2, function(col) any(col != 0))]
 	
-	#Subset both data and coordinates::
+	#Subset both data and coordinates ::
 
 		filtered_skifti <- skifti[, c("SubjectID", non_zero_voxels), with = FALSE]
 		filtered_coords <- coords[match(non_zero_voxels, voxel_cols), ]
 
 
-	#Create new header row with coordinates::
+	#Create new header row with coordinates ::
 	
 		coord_labels <- apply(filtered_coords, 1, function(row) paste0("(", row[1], ",", row[2], ",", row[3], ")"))
 		header_row <- c("Coordinates", coord_labels)
 
-	#Combine into final output: add coordinate row as a new row before data::
+	#Combine into final output: add coordinate row as a new row before data ::
 		
 		skifti_nonzero <- rbindlist(list(as.list(header_row), filtered_skifti), use.names = FALSE, fill = TRUE)
 
@@ -214,7 +213,8 @@ Output table:
 
 .. note:: 
 	##Coordinates for all voxels##
-	#Load full coordinates::
+	
+	#Load full coordinates ::
 	
 		coords_all <- fread("/path/to/test_FA_Skiftidata_mask_coordinates.txt", header = FALSE)
 		colnames(coords_all) <- c("X", "Y", "Z")
