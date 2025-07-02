@@ -15,7 +15,7 @@ STEP 1
 
 1.1 OpenNeuro Dataset: 
 
-Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_
+Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_ [3]
 
 1.2 Extract the download options for 1st three items ::
 	
@@ -104,7 +104,7 @@ STEP 1
 *******
 
 1.1 OpenNeuro Dataset:
-Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_.
+Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_ [3]. 
 
 1.2 Extract the download options for 1st three items ::
 	
@@ -248,6 +248,10 @@ Perform any kind of complex statistical analysis using this tabular data.
 References
 ----------
 
-[1] ENIGMA DTI Protocols: https://enigma.ini.usc.edu/protocols/dti-protocols/  
+[1] `ENIGMA DTI Protocols <https://enigma.ini.usc.edu/protocols/dti-protocols/>`_  
 
-[2] ANTs TBSS Package: https://github.com/trislett/ants_tbss
+[2] `ANTs TBSS Package <https://github.com/trislett/ants_tbss>`_
+
+[3] Philippe Poulin and Guillaume Theaud and Pierre-Marc Jodoin and Maxime Descoteaux (2022). TractoInferno: A large-scale, open-source, multi-site database for machine learning dMRI tractography. OpenNeuro. [Dataset] doi: doi:10.18112/openneuro.ds003900.v1.1.1
+
+
