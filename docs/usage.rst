@@ -30,11 +30,7 @@ STEP 2
 2.1 Run ANTs TBSS on the data.
 For this specific example data, use the script `tractinferno_prep_ants_tbss.sh <https://github.com/HKA07/skiftiGuide/blob/main/docs/make_subjects_list.sh>`_ and run it in the directory it is downloaded in.
 
-2.2 Then, run the following ``Docker`` command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can be force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing:
-
-``--cpus="1"`` 
-``--memory="4g"``
-``--ncpu 1``
+2.2 Then, run the following ``Docker`` command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can be force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing: ``--cpus="1"`` ``--memory="4g"````--ncpu 1``
    ::
 
       docker run -it --cpus="1" --memory="4g" -v $(pwd):/root/data -v $(pwd)/out_ants_tbss_enigma_ss:/root/data/out_enigma haanme/ants_tbss:0.4.2 -i /root/data/IMAGELIST_ss_docker.csv -c /root/data/CASELIST.txt --modality FA --enigma --ncpu 1 -o /root/data/out_enigma
@@ -48,11 +44,12 @@ Output in the terminal should look like this:
 STEP 3
 *******
 
-Check the output created by the ants_tbss ``Docker``. The out_ants_tbss_enigma_ss folder:
+Check the output created by the ants_tbss ``Docker``. The *out_ants_tbss_enigma_ss* folder:
 
 .. image:: fig_usage_3.png
 
 The most important folder is **stats**. Open it and make sure that you have the following:
+
    - FA_combined_roi_avg.csv
    - FA_combined_roi.csv
    - all_FA_skeletonised.nii.gz
@@ -64,9 +61,9 @@ If any of these files are missing, re-run the ``Docker``, or debug to see what w
 STEP 4
 *******
 
-4.1 You can rename the *out_ants_tbss_enigma_ss* to **tbss** to keep the directory structure clean.
+4.1 You can rename the *out_ants_tbss_enigma_ss* to *tbss* to keep the directory structure clean.
 
-4.2 Then run the following command in the directory above the **tbss** folder: 
+4.2 Then run the following command in the directory above the *tbss* folder: 
    ::
    
       docker run --rm -v $(pwd):/data -it ashjoll/skiftitools:0.1.1 --path /data --outputpath /data/results --TBSSsubfolder tbss --scalar FA --name test
@@ -78,17 +75,14 @@ To understand what each flag is doing, you can run:
 
 The skifti data file will be in the results folder, named *test_FA_Skiftidata.txt*.
 
-Although this file contains only 3 subjects, it can still be difficult to open in excel/numbers etc due to a lot of data. You can open it in ``R Studio`` with the following code: 
-   ::
+Although this file contains only 3 subjects, it can still be difficult to open in Excel/Numbers, etc, due to a lot of data. You can open it in ``R Studio`` with the following code: ::
 
-      library(data.table)
+	library(data.table)
+	skifti <- fread("/path/to/text/file", header = FALSE, skip = 8)
 
-      skifti <- fread("/path/to/text/file", header = FALSE, skip = 8)
-
-(The first few lines in the text file will have metadata that we don’t need, hence skip = 8).
-   ::
+(The first few lines in the text file will have metadata that we don’t need, hence skip = 8). ::
       
-      colnames(skifti) <- c("SubjectID", paste0("V", 1:(ncol(skifti)-1)))
+	colnames(skifti) <- c("SubjectID", paste0("V", 1:(ncol(skifti)-1)))
 
 The tabular data should look like this:
 
