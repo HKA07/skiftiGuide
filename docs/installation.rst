@@ -25,7 +25,7 @@ Possible issues that might come up when running the ``Docker``:
 .. warning::
     The image needs linux/amd64 (you get this as a warning and not an error, so ``Docker`` should still keep running). However, to avoid this issue altogether, MAC users can do this: ::
 
-        docker run --rm --platform linux/amd64 -v /path/to/data:/out/stats ashjoll/skiftitools:0.1.1 
+        docker run --rm --platform linux/amd64 -v /path/to/data:/out/stats ashjoll/skiftitools:0.2.0 
     
 
 **Resource**: `Docker Source Link <https://hub.docker.com/r/ashjoll/skiftitools/tags>`_.
