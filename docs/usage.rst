@@ -13,7 +13,9 @@ A. Processing OpenNeuro DTI data using SkiftiTools v0.1.1
 STEP 1
 *******
 
-1.1 OpenNeuro Dataset: Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_
+1.1 OpenNeuro Dataset: 
+
+Download shell script under *Download with a shell script* from `OpenNeuro <https://openneuro.org/datasets/ds003900/versions/1.1.1/download#>`_
 
 1.2 Extract the download options for 1st three items ::
 	
@@ -28,6 +30,7 @@ STEP 2
 *******
 
 2.1 Run ANTs TBSS on the data.
+
 For this specific example data, use the script `tractinferno_prep_ants_tbss.sh <https://github.com/HKA07/skiftiGuide/blob/main/docs/tractinferno_prep_ants_tbss.sh>`_ and run it in the directory it is downloaded in.
 
 2.2 Then, run the following ``Docker`` command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can be force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing: ``--cpus="1"`` ``--memory="4g"`` ``--ncpu 1`` ::
@@ -43,11 +46,11 @@ Output in the terminal should look like this:
 STEP 3
 *******
 
-Check the output created by the ants_tbss ``Docker``. The *out_ants_tbss_enigma_ss* folder:
+3.1 Check the output created by the ants_tbss ``Docker``. The *out_ants_tbss_enigma_ss* folder:
 
 .. image:: fig_usage_3.png
 
-The most important folder is **stats**. Open it and make sure that you have the following:
+3.2 The most important folder is **stats**. Open it and make sure that you have the following:
 
    - FA_combined_roi_avg.csv
    - FA_combined_roi.csv
@@ -149,11 +152,11 @@ To understand what each flag is doing, run: ::
 
 	docker run --rm ashjoll/skiftitools:0.2.0 -h
 
-The skifti data file will be in the results folder, named *test_FA_Skiftidata.txt*.
+The Skifti data file will be in the results folder, named *test_FA_Skiftidata.txt*.
 
-If you used the ``--writemaskcoordinates``, you would find a test_FA_Skiftidata_mask_coordinates.txt folder containing all the coordinates.
+If you used the ``--writemaskcoordinates``, you would find a *test_FA_Skiftidata_mask_coordinates.txt* folder containing all the coordinates.
 
-Although this test skiftidata file contains only 3 subjects, it can still be difficult to open in excel/numbers etc due to a lot of voxel data. You can open it in R studio with the following code: ::
+Although this test skiftidata file contains only 3 subjects, it can still be difficult to open in Excel/Numbers, etc, due to a lot of voxel data. You can open it in ``R Studio`` with the following code: ::
 
 	library(data.table)
 	skifti <- fread("/path/to/text/file", header = FALSE, skip = 8)
@@ -175,7 +178,7 @@ The picture does not display all the columns; there will be many. The V1, V2, V3
 STEP 6
 *******
 
-To integrate the coordinates text file to the skiftidata table in R:
+To integrate the coordinates text file to the skiftidata table in ``R``:
 
 .. note::
 	
