@@ -28,7 +28,7 @@ STEP 2
 *******
 
 2.1 Run ANTs TBSS on the data.
-For this specific example data, use the script `tractinferno_prep_ants_tbss.sh <https://github.com/HKA07/skiftiGuide/blob/main/docs/make_subjects_list.sh>`_ and run it in the directory it is downloaded in.
+For this specific example data, use the script `tractinferno_prep_ants_tbss.sh <https://github.com/HKA07/skiftiGuide/blob/main/docs/tractinferno_prep_ants_tbss.sh>`_ and run it in the directory it is downloaded in.
 
 2.2 Then, run the following ``Docker`` command, but make sure that you are using memory capacity based on the machine it is running on. ANTs registration is very memory-intensive and the *antsRegistrationSyNQuick.sh* process can be force killed. It is safer to use flags with the following parameters, although it might run a little slower because of single-threaded processing: ``--cpus="1"`` ``--memory="4g"`` ``--ncpu 1`` ::
 
