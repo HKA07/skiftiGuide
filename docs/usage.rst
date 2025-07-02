@@ -63,10 +63,9 @@ STEP 4
 
 4.1 You can rename the *out_ants_tbss_enigma_ss* to *tbss* to keep the directory structure clean.
 
-4.2 Then run the following command in the directory above the *tbss* folder: 
-::
+4.2 Then run the following command in the directory above the *tbss* folder: ::
    
-docker run --rm -v $(pwd):/data -it ashjoll/skiftitools:0.1.1 --path /data --outputpath /data/results --TBSSsubfolder tbss --scalar FA --name test
+	docker run --rm -v $(pwd):/data -it ashjoll/skiftitools:0.1.1 --path /data --outputpath /data/results --TBSSsubfolder tbss --scalar FA --name test
 
 To understand what each flag is doing, you can run: 
    ::
